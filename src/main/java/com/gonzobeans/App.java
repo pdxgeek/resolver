@@ -8,8 +8,12 @@ public class App
 {
     public static void main( String[] args )
     {
-       System.out.println( "Hello World!" );
-
+        // add items to the resolver in the format of:
+        // {prefix} , {regex match}, {lambda expression}
+        // resolver will group common prefixes together, and check regex for matching in order
+        // so be careful how you order and define your regex matching
+        // resolver will also cache the results of specific urls
+        
         var resolver = new Resolver();
         resolver.addItem("/notifications/v1/", "a.*", (input) -> "Hello");
         resolver.addItem("/notifications/v1/", "b.*", (input) -> "Facetime, " + input);
